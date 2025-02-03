@@ -57,47 +57,18 @@ Once you've installed the dependencies and activated the virtual environment, yo
 
 1. **Run the wake-up word detection**:
    ```bash
-   python detect_wake_word.py
+   python predict.py
    ```
 
 2. **Train the model**:
    If you'd like to train the model with your own dataset, run:
    ```bash
-   python train_model.py
+   python model3.py
    ```
 
-3. **Generate speech response**:
-   You can use the TTS library to generate speech output:
-   ```bash
-   python generate_response.py --text "Hello, how can I help you?"
-   ```
 
-## Example
 
-Here's an example of using the wake-up word detection model:
 
-```python
-import sounddevice as sd
-import numpy as np
-from wake_up_word_model import detect_wake_word
-
-# Set up the audio input stream
-sample_rate = 16000
-duration = 5  # Duration of the recording in seconds
-
-# Function to process audio and detect the wake-up word
-def process_audio(indata, frames, time, status):
-    if status:
-        print(status, file=sys.stderr)
-    audio_data = np.array(indata)
-    detected = detect_wake_word(audio_data)
-    if detected:
-        print("Wake-up word detected!")
-
-# Record audio in real-time
-with sd.InputStream(callback=process_audio, channels=1, samplerate=sample_rate):
-    sd.sleep(duration * 1000)
-```
 
 ## Contributing
 
@@ -110,4 +81,3 @@ If you'd like to contribute to the project, feel free to fork the repository, su
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
-
