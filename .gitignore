@@ -2,3 +2,7 @@
 *.wav
 *.jpg
 *.mp3
+oldvers/
+tom2/
+audio_data/
+__pycache__/

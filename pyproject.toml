@@ -1,0 +1,33 @@
+[tool.poetry]
+name = "wake-up-word"
+version = "0.1.0"
+description = ""
+authors = ["DeepLearningDude <pnikita1109@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.11,<3.12"
+matplotlib = "^3.8.4"
+seaborn = "^0.13.2"
+keras = "^3.3.2"
+ipython = "^8.23.0"
+pydub = "^0.25.1"
+librosa = "^0.10.2.post1"
+scikit-learn = "^1.5.0"
+python-speech-features = "^0.6"
+tqdm = "^4.66.2"
+torch = { version = "^2.1.0", source = "pytorch" }
+nltk = "^3.8.1"
+sounddevice = "^0.5.1"
+tts = "^0.22.0"
+pyannote-audio = {version = "3.3.0", extras = ["separation"]}
+datasets = "^3.1.0"
+
+[[tool.poetry.source]]
+name = "pytorch"
+url = "https://download.pytorch.org/whl/cu121"
+priority = "explicit"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
