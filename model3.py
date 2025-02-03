@@ -17,7 +17,7 @@ class WakeWordModel(nn.Module):
         self.hop_length = 160
         self.win_length = 512
         
-        # Улучшенная предобработка
+        # Определение мел-спектрограммы с улучшенными параметрами
         self.mel_spec = T.MelSpectrogram(
             sample_rate=sample_rate,
             n_fft=self.n_fft,
@@ -29,12 +29,14 @@ class WakeWordModel(nn.Module):
             power=2.0
         )
         
+        # Используем аугментацию для улучшения устойчивости модели к различным шумам и изменениям
         self.spec_augment = nn.Sequential(
-            T.TimeStretch(),
-            T.FrequencyMasking(freq_mask_param=30),
-            T.TimeMasking(time_mask_param=100)
+            T.TimeStretch(),  # Применение растяжки времени
+            T.FrequencyMasking(freq_mask_param=30),  # Применение маскировки в частотной области
+            T.TimeMasking(time_mask_param=100)  # Применение маскировки во временной области
         )
-        
+
+        # Преобразуем амплитуду в децибелы для улучшенной визуализации спектра
         self.amplitude_to_db = T.AmplitudeToDB(stype='power')
         
         # Улучшенные CNN слои
